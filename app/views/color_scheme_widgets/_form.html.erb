@@ -1,0 +1,17 @@
+<%= form_with(model: color_scheme_widget, local: true) do |form| %>
+  <% if color_scheme_widget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(color_scheme_widget.errors.count, "error") %> prohibited this color_scheme_widget from being saved:</h2>
+
+      <ul>
+      <% color_scheme_widget.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

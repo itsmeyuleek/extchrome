@@ -1,0 +1,27 @@
+<%= form_with(model: gradient_widget, local: true) do |form| %>
+  <% if gradient_widget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gradient_widget.errors.count, "error") %> prohibited this gradient_widget from being saved:</h2>
+
+      <ul>
+      <% gradient_widget.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :start_color %>
+    <%= form.text_field :start_color %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_color %>
+    <%= form.text_field :end_color %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

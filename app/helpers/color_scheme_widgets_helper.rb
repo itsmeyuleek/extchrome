@@ -1,0 +1,2 @@
+module ColorSchemeWidgetsHelper
+end

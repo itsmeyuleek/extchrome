@@ -10,7 +10,7 @@
     <%= javascript_pack_tag    'widgets' %>
   </head>
 
-  <body data-props="<%= Widget.all.as_json(only: [:colornumber]).to_json %>">
+  <body data-props="<%= Widget.all.as_json.to_json %>">
     <%= yield %>
   </body>
 </html>

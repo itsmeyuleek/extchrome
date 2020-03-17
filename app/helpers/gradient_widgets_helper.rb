@@ -1,0 +1,2 @@
+module GradientWidgetsHelper
+end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gradient Widgets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start color</th>
+      <th>End color</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gradient_widgets.each do |gradient_widget| %>
+      <tr>
+        <td><%= gradient_widget.start_color %></td>
+        <td><%= gradient_widget.end_color %></td>
+        <td><%= link_to 'Show', gradient_widget %></td>
+        <td><%= link_to 'Edit', edit_gradient_widget_path(gradient_widget) %></td>
+        <td><%= link_to 'Destroy', gradient_widget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gradient Widget', new_gradient_widget_path %>
