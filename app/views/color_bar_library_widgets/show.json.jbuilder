@@ -1,0 +1,1 @@
+json.partial! "color_bar_library_widgets/color_bar_library_widget", color_bar_library_widget: @color_bar_library_widget

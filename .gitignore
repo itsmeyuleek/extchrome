@@ -11,6 +11,10 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+f3_development
+/db/project_test
+/db/project_production
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -30,9 +34,11 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+public/uploads
+public/assets
 /public/packs
 /public/packs-test
 /node_modules
-/yarn-error.log
+/node_modules_bak
 yarn-debug.log*
 .yarn-integrity

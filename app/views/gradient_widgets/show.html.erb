@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start color:</strong>
+  <%= @gradient_widget.start_color %>
+</p>
+
+<p>
+  <strong>End color:</strong>
+  <%= @gradient_widget.end_color %>
+</p>
+
+<%= link_to 'Edit', edit_gradient_widget_path(@gradient_widget) %> |
+<%= link_to 'Back', gradient_widgets_path %>

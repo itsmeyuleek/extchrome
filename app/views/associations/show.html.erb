@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Words:</strong>
+  <%= @association.words %>
+</p>
+
+<p>
+  <strong>Input word:</strong>
+  <%= @association.input_word %>
+</p>
+
+<%= link_to 'Edit', edit_association_path(@association) %> |
+<%= link_to 'Back', associations_path %>
