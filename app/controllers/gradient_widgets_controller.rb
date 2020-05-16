@@ -105,7 +105,7 @@ class GradientWidgetsController < ApplicationController
     @req = request.body.read
     unless @req.blank?
       @userId = params[:userId]
-      @wdgLast = ColorBarWidget.last()
+      @wdgLast = GradientWidget.last()
       unless @wdgLast.nil?
         @userWidget = UserWidget.find_by(:widgetable_type => "GradientWidget", :user_id => @userId.to_i)
         unless @userWidget.nil?

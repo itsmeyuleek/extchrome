@@ -64,8 +64,24 @@ class UserWidgetsController < ApplicationController
   def getWidgets
     @userId = params[:userId]
     @widgets = UserWidget.where(:user_id => @userId).find_each
-    puts(@widgets.inspect)
-    render json: { results: @widgets.map{ |e| { type: e.widgetable_type }}}
+    render json: { results: @widgets.map{ |e| { type: e.widgetable_type, hidden: e.hidden }}}
+  end
+
+  def toggleHidden
+    $stdout.puts "toggling hide"
+    @userId = params[:userId].to_i, @type = params[:type]
+    if @userId != nil
+      @userEntry = UserWidget.find_by(:widgetable_type => @type, :user_id => @userId)
+      if @userEntry != nil
+        @userEntry.update(:hidden => !@userEntry[:hidden])
+        render json: JSON("result" => 0)
+      else
+        render json: JSON("result" => -1)
+      end
+    else
+      render json: JSON("result" => -1)
+      return
+    end
   end
 
   private

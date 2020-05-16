@@ -138,8 +138,20 @@ class ColorBarLibraryWidgetsController < ApplicationController
   end
 
   def addColor
-    @userId, @colors, @overflow = params[:userId].to_i, params[:colors]
-    $stdout.puts @userId, @colors, @overflow
+    @userId, @colors, @gradients, @palettes = params[:userId].to_i, params[:colors], params[:gradients], params[:palettes]
+    $stdout.puts @userId, @colors, @gradients, @palettes
+    @newGradients = []
+    @newPalettes = []
+    if @gradients != nil
+      @gradients.each do |key, val|
+        @newGradients[key.to_i] = val
+      end
+    end
+    if @palettes != nil
+      @palettes.each do |key, val|
+        @newPalettes[key.to_i] = val
+      end
+    end
     if @userId != nil
       @userEntry = UserWidget.find_by(:widgetable_type => "ColorBarLibraryWidget", :user_id => @userId)
       $stdout.puts @userEntry.inspect
@@ -150,7 +162,7 @@ class ColorBarLibraryWidgetsController < ApplicationController
         $stdout.puts @tableEntry.inspect
         if @tableEntry.nil?
         else
-          ColorBarLibraryWidget.update(@userEntry[:widgetable_id], :color => @colors)
+          ColorBarLibraryWidget.update(@userEntry[:widgetable_id], :color => @colors, :gradients => @newGradients, :palettes => @newPalettes)
         end
         render json: JSON("isAdded" => "1")
       end
@@ -162,12 +174,12 @@ class ColorBarLibraryWidgetsController < ApplicationController
     if @userId != nil
       @userEntry = UserWidget.find_by(:widgetable_type => "ColorBarLibraryWidget", :user_id => @userId)
       if @userEntry.nil?
-        render json: JSON('result' => '0')
+        render json: JSON('result' => '1')
       else
         @clw = ColorBarLibraryWidget.find(@userEntry[:widgetable_id])
-        @colors = @clw[:color]
-        $stdout.puts @colors
-        render json: JSON("result" => "1", "colors" => @colors)
+        @colors, @gradients, @palettes = @clw[:color], @clw[:gradients], @clw[:palettes]
+        $stdout.puts @colors, @gradients, @palettes
+        render json: JSON("result" => "0", "colors" => @colors, "gradients" => @gradients, "palettes" => @palettes)
       end
     end
   end

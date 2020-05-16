@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :color_palette_widgets do
+    collection do
+      post 'bindUser', 'unbindUser', 'handleColor'
+      get 'bindUser', 'unbindUser', 'handleColor'
+    end
+  end
+
   resources :associations do
     collection do
       post 'bindUser', 'unbindUser', 'handleText'
@@ -32,7 +39,7 @@ Rails.application.routes.draw do
 
   resources :user_widgets do
     collection do
-      get 'getWidgets'
+      get 'getWidgets', 'toggleHidden'
       post 'getWidgets'
     end
   end
