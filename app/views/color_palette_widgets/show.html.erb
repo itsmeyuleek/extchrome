@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @color_palette_widget.color %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @color_palette_widget.type %>
+</p>
+
+<%= link_to 'Edit', edit_color_palette_widget_path(@color_palette_widget) %> |
+<%= link_to 'Back', color_palette_widgets_path %>

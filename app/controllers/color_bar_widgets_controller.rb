@@ -126,7 +126,7 @@ class ColorBarWidgetsController < ApplicationController
   end
 
   def handleColor
-    $stdout.puts "Handling color bar color"
+    $stdout.puts "Handling COLOR BAR WIDGET color"
     @userId, @color = params[:userId].to_i, params[:color]
     puts @userId, @color
     if @userId != nil
@@ -150,7 +150,7 @@ class ColorBarWidgetsController < ApplicationController
         end
       end
     else
-      "no user id, cant do anything"
+      puts "userId is null"
       render json: JSON("result" => "0")
       return
     end
